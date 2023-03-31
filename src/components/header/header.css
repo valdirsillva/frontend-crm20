@@ -1,0 +1,10 @@
+.logo-gmvb {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo-gmvb img  {
+    width: 340px;
+    height: 120px;
+    object-fit: cover;
+}

@@ -1,0 +1,20 @@
+
+@media (min-width: 320px) and (max-width: 720px) {
+    .logo-gmvb img {
+        height: 70px;
+        margin-top: 40px;
+        margin-left: 0;
+        object-fit: scale-down;
+        width: 100%;
+    }
+
+    .justify-content-between {
+        flex-direction: row !important;
+        align-items: baseline;
+        margin-left: .6rem !important;
+    }
+
+    .justify-content-between>.m-5 {
+        margin: 1rem 0 !important;
+    }
+}

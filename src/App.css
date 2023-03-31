@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html,
+body {
+  font-family: 'Sancoale Verdana', sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  /* font-size: 1rem; */
+}
+
+/* custom scrollbar customized */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 0;
+  cursor: not-allowed;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* background: #64B819; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background: transparent; */
+  border-radius: 10px;
+  background: #6bb618;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: rgb(75, 80, 80);  */
+}

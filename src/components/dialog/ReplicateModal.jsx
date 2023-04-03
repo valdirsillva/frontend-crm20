@@ -3,6 +3,8 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { Link } from "react-router-dom";
 
+import "./modal-replicate.css"
+
 export default function ReplicateModal(props) {
     const [visible, setVisible] = useState(false);
 
@@ -15,13 +17,30 @@ export default function ReplicateModal(props) {
                 Replicar
             </Link>
 
-            <Dialog header="Deseja replicar essa estratégia?" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
-                <p className="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+            <Dialog header="Deseja replicar essa estratégia?" visible={visible} style={{ width: '40vw' }} onHide={() => setVisible(false)}>
+               <div className="box">
+                    <div className="col-md-12 col-xs-12 select-item ">
+                        <label htmlFor="estragegia" className="form-label">Nome da estratégia</label>
+                        <input type="text" name="" id="estragegia" className="form-control" />
+                    </div>
+                    {/* <div className="col-md-6 col-xs-12 select-item ">
+                        <label htmlFor="unidade"  className="form-label">Unidade</label>
+                        <input type="text" name="" id="unidade" className="form-control" />
+                    </div> */}
+               </div>
+
+               <div className="box">
+                    <div className="col-md-6 col-xs-12 select-item ">
+                        <label htmlFor="estragegia" className="form-label">Solicitante</label>
+                        <input type="text" name="" id="estragegia" value="Jhon Doe" className="form-control" disabled/>
+                    </div>
+                    <div className="col-md-6 col-xs-12 select-item ">
+                        <label htmlFor="unidade"  className="form-label">Unidade</label>
+                        <input type="text" name="" id="unidade" value="São Paulo" className="form-control" disabled/>
+                    </div>
+               </div>
+               <br/>
+               <input type="submit" value="Salvar" className="gmvb-button-azul" />
             </Dialog>
         </div>
     )

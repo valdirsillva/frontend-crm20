@@ -4,7 +4,7 @@ const getUnities = () => {
     try {
         // const response = await api.get('/')
         const response = [
-            { "id": 1, "unidade": "CALL CENTER - SEDE 6º" },
+            { "id": 1, "unidade": "CALL CENTER-SEDE 6º" },
             { "id": 2, "unidade": "BLUMENAU"  },
             { "id": 3, "unidade": "BELO HORIZONTE" },
             { "id": 4, "unidade": "PARÁ" }

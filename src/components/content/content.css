@@ -95,7 +95,7 @@ h1 {
 .row div input {
     /* padding: 10px 16px; */
     background: #f3f3f3;
-    height: 40px;
+    height: 44px;
 }
 
 .row div input[type=range] {
@@ -131,18 +131,37 @@ h1 {
 
 /* custom component */
 .p-multiselect {
-    width: 244.46px;
-    height: 40px !important;
+    width: 100%;
+    height: 44px !important;
     background: #f3f3f3 !important;
 }
 
+.p-multiselect:focus{
+    color: #212529;
+    background-color: #fff !important;
+    border-color: #86b7fe !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25) !important;
+} 
+
 .p-multiselect.p-multiselect-chip .p-multiselect-token {
     color: #fff !important;
+    background: #6bb618 !important;
+    height: 26px;
+    padding: 5px 0;
 }
 
 .p-multiselect .p-multiselect-label {
-    padding: 0.4rem 0.75rem !important;
+    padding: 0.5rem 0.75rem !important;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+    border-color: #254484 !important;
+    background: #254484 !important;
+}
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item.p-highlight {
+    color: #254484 !important;
 }
 
 .card {
@@ -260,6 +279,11 @@ h1 {
 
 }
 
+.input-range>span {
+    font-size: .685rem;
+    color: #6c757d;
+}
+
 /* input range custom */
 @media (min-width: 320px) and (max-width: 800px) {
     .p-multiselect {
@@ -270,9 +294,15 @@ h1 {
         margin-bottom: .7rem;
     }
 
-    .select-item .form-control {
-        height: 48px;
+    .select-item .form-control,
+    .p-multiselect {
+        height: 48px !important;
     }
+
+    .p-multiselect .p-multiselect-label {
+        padding: 0.6rem 0.75rem !important;
+    }
+
 
     /* .row div select,
     .row div input {
@@ -338,6 +368,15 @@ h1 {
         font-size: 1rem !important;
         width: 130px;
         height: 50px;
+    }
+
+    .input-range>span {
+        font-size: .685rem;
+        color: #6c757d;
+    }
+
+    .input-range input[type="range"] {
+        width: 250px;
     }
 }
 

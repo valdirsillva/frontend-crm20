@@ -14,6 +14,7 @@ import { mockData } from './mock-data';
 import Header from '../header/Header';
 import { getTokenLocalStorage } from '../../services/utils/storage';
 import DialogMessage from '../dialog/DialogMessage';
+import ReplicateModal from '../dialog/ReplicateModal';
 
 export default function Table() {
     const [tableData, setTableData] = useState('')
@@ -32,6 +33,9 @@ export default function Table() {
 
     const token = getTokenLocalStorage()
     // console.log(token)
+    const items = getStatus()
+
+    const [obj, setObj] = useState('')
 
     // Requisita valores baseados nos filtros selecionados
     const filterDataItems = () => {
@@ -42,7 +46,6 @@ export default function Table() {
             status: filterStatus
         }
         // const data = await api.get(`/filter=${filters}`)
-
         let response = mockData.filter(({ data, nome_estrategia, solicitante, status }) => 
             data === filters.data 
             || nome_estrategia === filters.estrategia 
@@ -61,14 +64,6 @@ export default function Table() {
         console.log({ filters })
     }
 
-    // Replicar uma estratégia
-    const duplicateRules = () => { }
-
-    const items = getStatus()
-    const handleContentStatus = (e) => {
-        alert(e.target.value)
-    }
-
     useEffect(() => {
         // Mock data
         const values = mockData
@@ -79,8 +74,7 @@ export default function Table() {
     const contentStatus = () => {
         return (
             <React.Fragment>
-                <select name="status_estrategia" className="rs-input" onChange={handleContentStatus}>
-                    <option>Status da estratégia</option>
+                <select name="status_estrategia" className="rs-input" >
                     {items.map(value => {
                         return (
                             <option value={value.status} key={value.id}>{value.status}</option>
@@ -91,19 +85,26 @@ export default function Table() {
         );
     };
 
-    const contentAction = () => {
+    const contentAction = (rowData) => {
+        const replicate = (id) => {
+            // console.log(id)
+            const handleClickGetById = () => {
+                setObj(rowData)
+            }
+
+            handleClickGetById()
+        }
+
         return (
             <React.Fragment>
-               <a href='#' className='btn-gmvb-primary ' onClick={replicate}>
-                    Replicar
+               <a href='#' className='btn-gmvb-primary' onClick={replicate(rowData.id)}>
+                    {/* Replicar */}
+                    <ReplicateModal dataItem={obj}  />
                </a>
             </React.Fragment>
         );
     }
 
-    const replicate = () => {
-        
-    }
 
     return (
         <div className="col py-3 mf-9">
@@ -216,7 +217,7 @@ export default function Table() {
                     ></Column>
                    
                     {/* <Column field="previsao" sortable header="PREVISÃO" ></Column> */}
-                    <Column field="" sortable body={contentAction}></Column>
+                    <Column field="solicitante" sortable body={contentAction}></Column>
                 </DataTable>
             </div>
         </div>

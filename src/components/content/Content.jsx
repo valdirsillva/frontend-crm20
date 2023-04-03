@@ -85,30 +85,6 @@ export default function Content() {
         }
     }
 
-    // const handleChangeUnities = (e) => {
-    //     let value = Array.from(e.target.selectedOptions, option => option.value);
-    //     setUnidades({ values: value })
-    // }
-
-    const handleChangeOffers = (e) => {
-        setOfertas(e.value)
-    }
-
-    const handleChangeHeatCare = (e) => {
-        setConvenios(e.value)
-    }
-    const handleChangeBanks = (e) => {
-        setBancos(e.value)
-    }
-
-    const unidadesSelecionadas = (e) => {
-        setSelectedCities(e.value)
-    }
-
-    const handleChangeProducts = (e) => {
-        setItemVenda(e.value)
-    }
-
     return (
         <div className="col py-3 content-mf-9">
             <Header />          
@@ -134,7 +110,7 @@ export default function Content() {
                             <div className="card flex justify-content-center">
                                 <MultiSelect 
                                     value={selectedCities} 
-                                    onChange={unidadesSelecionadas} 
+                                    onChange={(e) => setSelectedCities(e.value)} 
                                     options={unities} 
                                     optionLabel="unidade" 
                                     display="chip"
@@ -167,7 +143,6 @@ export default function Content() {
                         <div className="col-md-3 col-xs-12 select-item">
                             <label htmlFor="tempo" className="form-label">Por quanto tempo</label>
                             <select className="form-control" id='tempo' onChange={(e) => setTempoUso(e.target.value)}>
-                                <option className="form-option-b">-</option>
                                 <option className="form-option-b" value="1 semana">1 SEMANA</option>
                                 <option className="form-option-b" value="2 semana">2 SEMANAS</option>
                                 <option className="form-option-b" value="3 semana">3 SEMANAS</option>
@@ -231,7 +206,7 @@ export default function Content() {
                                 />
                             </div> */}
 
-                            <p className='mb-0 input-item-selected'>{itemVenda}</p>
+                            <p className='mt-2 input-item-selected'>{itemVenda}</p>
                         </div>
 
                         <div className="col-md-3 col-xs-12 select-item">
@@ -239,7 +214,7 @@ export default function Content() {
                             <div className="card flex justify-content-center">
                                 <MultiSelect 
                                     value={ofertas} 
-                                    onChange={handleChangeOffers} 
+                                    onChange={(e) => setOfertas(e.value)} 
                                     options={offers} 
                                     optionLabel="oferta" 
                                     display="chip"
@@ -259,12 +234,29 @@ export default function Content() {
 
                         </div>
 
+                        
+                        <div className='col-md-2 select-item'>
+                          <label htmlFor="para_quem" className="form-label">Para quem</label>
+                            <select className="form-control" id='para_quem' onChange={(e) => setCliente(e.target.value)}>
+                                {clients.map(({ id, cliente }) => {
+                                    return (
+                                        <option
+                                            className="form-option-b"
+                                            value={cliente} key={id}>
+                                            {cliente}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                            <p className='mt-1 mb-0 input-item-selected'>{cliente}</p>
+                        </div>
+
                         <div className="col-md-3 col-xs-12 select-item">
                             <label htmlFor="convenio" className="form-label">Qual convênio</label>
                             <div className="card flex justify-content-center">
                                 <MultiSelect 
                                     value={convenios} 
-                                    onChange={handleChangeHeatCare} 
+                                    onChange={(e) => setConvenios(e.value)} 
                                     options={healthInsurance}
                                     // optionLabel nome da chave do obj 
                                     optionLabel="convenio" 
@@ -281,25 +273,11 @@ export default function Content() {
                             <select className="form-control" id='estado' onChange={(e) => setEstado(e.target.value)}>
                                 <option className="form-option-b" value="SP">SP</option>
                                 <option className="form-option-b" value="RJ">RJ</option>
+                                <option className="form-option-b" value="BA">BA</option>
                             </select>
                             <p className='mt-1 mb-0 input-item-selected'>{estado}</p>
                         </div>
 
-                        <div className='col-md-2 select-item'>
-                          <label htmlFor="para_quem" className="form-label">Para quem</label>
-                            <select className="form-control" id='para_quem' onChange={(e) => setCliente(e.target.value)}>
-                                {clients.map(({ id, cliente }) => {
-                                    return (
-                                        <option
-                                            className="form-option-b"
-                                            value={cliente} key={id}>
-                                            {cliente}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                            <p className='mt-1 mb-0 input-item-selected'>{cliente}</p>
-                        </div>
                     </div>
 
                     <div className="row m-top-5" >
@@ -308,7 +286,7 @@ export default function Content() {
                             <div className="card flex justify-content-center">
                                 <MultiSelect 
                                     value={bancos} 
-                                    onChange={handleChangeBanks} 
+                                    onChange={(e) => setBancos(e.value)} 
                                     options={banks}
                                     optionLabel="banco" 
                                     display="chip"

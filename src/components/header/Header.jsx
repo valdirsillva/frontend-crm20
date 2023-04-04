@@ -5,7 +5,7 @@ export default function Header() {
     return (
         <>
             <header className='header-desktop logo-gmvb'>
-               <img src="/logo-gmvb-blue.svg" alt="Logo Mais Leads" />
+               <img src="/logo-maisleads.png" alt="Logo Mais Leads" />
             </header>
         </>
     )

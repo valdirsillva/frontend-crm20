@@ -20,7 +20,7 @@ h3 {
 /* custom scrollbar customized */
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
   border-radius: 0;
   cursor: not-allowed;
 }

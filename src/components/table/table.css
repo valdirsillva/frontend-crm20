@@ -3,12 +3,14 @@
 }
 
 .gmvb-button-azul {
-    font-size: 17px;
-    width: 110px;
+    font-size: .890rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    width: 100px;
     height: 44.01px;
     color: white;
     border: 0;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #224386;
 }
 
@@ -16,8 +18,8 @@
 .p-paginator .p-paginator-prev,
 .p-paginator .p-paginator-next,
 .p-paginator .p-paginator-last {
-    min-width: 2rem !important;
     height: 2rem !important;
+    min-width: 2rem !important;
 }
 
 .content-title {
@@ -44,6 +46,22 @@
 table tr th,
 table tr td {
     border: 1px solid #f1e9e9 !important;
+}
+.p-column-header-content:hover, .p-datatable .p-datatable-thead > tr > th {
+    color: white !important;
+}
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: white !important;
+}
+.p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 1rem 1rem;
+    border: 1px solid #dee2e6;
+    border-width: 0 0 1px 0;
+    font-weight: 700;
+    color: #eef2ff;
+    background: #224386 !important;
+    /* transition: box-shadow 0.2s; */
 }
 
 @media (min-width: 320px) and (max-width: 800px) {
@@ -73,7 +91,7 @@ table tr td {
     .p-xs {
         justify-content: end;
         margin: 1rem 0 !important;
-        ;
+        
     }
 
     .header-desktop {

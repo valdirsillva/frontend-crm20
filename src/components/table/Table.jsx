@@ -105,7 +105,6 @@ export default function Table() {
         );
     }
 
-
     return (
         <div className="col py-3 mf-9">
             <Header />
@@ -169,6 +168,20 @@ export default function Table() {
                             <option>Filtrar por status</option>
                         </select>
                     </div>
+
+                    <div className="col-md-2 mb-3">
+                        <button
+                            type="submit"
+                            onClick={filterDataItems}
+                            className="gmvb-button-azul mt-4 d-none d-lg-block d-md-block"
+                        >
+                            Filtrar
+                        </button>
+
+                        <button type='button' className='gmvb-strategy d-lg-none d-md-none'>
+                            <Icon.Search size={28} className="d-lg-none d-md-none" />
+                        </button>
+                    </div>
                 </div>
 
                 <div className='row'>
@@ -182,7 +195,7 @@ export default function Table() {
                         />
                     </div> */}
                     
-                    <div className="col-md-2 mb-3">
+                    {/* <div className="col-md-2 mb-3">
                         <button
                             type="submit"
                             onClick={filterDataItems}
@@ -194,7 +207,7 @@ export default function Table() {
                         <button type='button' className='gmvb-strategy d-lg-none d-md-none'>
                             <Icon.Search size={28} className="d-lg-none d-md-none" />
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
@@ -216,7 +229,6 @@ export default function Table() {
                         exportable={false}  
                     ></Column>
                    
-                    {/* <Column field="previsao" sortable header="PREVISÃO" ></Column> */}
                     <Column field="solicitante" sortable body={contentAction}></Column>
                 </DataTable>
             </div>

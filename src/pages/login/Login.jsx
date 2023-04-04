@@ -37,7 +37,7 @@ export default function Login() {
                     <div className={css.display}>
                         <div className={css.login}>
                             <div className={css.logoBg}>
-                                <img src="/logo.png" alt="Logo Grupo Mais Valor" />
+                                <img src="/logo-blue.png" alt="Logo Grupo Mais Valor" />
                             </div>
 
                             <div className={css.contentLogin}>

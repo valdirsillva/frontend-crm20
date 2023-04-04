@@ -16,6 +16,7 @@ import
 
 import DialogMessage from '../dialog/DialogMessage';
 import { MultiSelect } from 'primereact/multiselect';
+import dataset from '../../dataset.json'
 
 export default function Content() {
     // Retorna o token de autenticação do usuário
@@ -26,7 +27,7 @@ export default function Content() {
     const [maxValue, setMaxValue] = useState(90)
 
     // unidade
-    const [unidades, setUnidades] = useState({})
+    const [unidades, setUnidades] = useState(null)
     const [quandoVaiUsar, setQuandoVaiUsar] = useState('')
     const [tempoUso, setTempoUso] = useState('')
     const [agentes, setAgentes] = useState(0)
@@ -39,7 +40,6 @@ export default function Content() {
     const [faixaEtaria, setFaixaEtaria] = useState({ min: 0, max: 0 })
     const [bancos, setBancos] = useState(null)
     const [nomeEstrategia, setNomeEstrategia] = useState('')
-    const [selectedCities, setSelectedCities] = useState(null);
     
     // Requisições p/ backend
     const banks = getBanks()
@@ -61,6 +61,13 @@ export default function Content() {
         setFaixaEtaria({ ...faixaEtaria, max: e.target.value })
     }
 
+    const handleFileChosen = () => {
+        const fileReader = new FileReader();
+        // fileReader.onloadend = handleFileRead;
+        fileReader.readAsText(dataset);
+        console.log(fileReader)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         // console.log(faixaEtaria)
@@ -80,10 +87,12 @@ export default function Content() {
                 nomeEstrategia
             }
             setData(response)
+            console.log(response)
         } catch (err) {
             console.log(err)
         }
     }
+
 
     return (
         <div className="col py-3 content-mf-9">
@@ -109,8 +118,8 @@ export default function Content() {
                             <label htmlFor="unidade" className="form-label">Qual unidade</label>
                             <div className="card flex justify-content-center">
                                 <MultiSelect 
-                                    value={selectedCities} 
-                                    onChange={(e) => setSelectedCities(e.value)} 
+                                    value={unidades} 
+                                    onChange={(e) => setUnidades(e.value)} 
                                     options={unities} 
                                     optionLabel="unidade" 
                                     display="chip"
@@ -120,8 +129,8 @@ export default function Content() {
                                 />
                             </div>
 
-                            { selectedCities?.length > 0 ? (
-                                selectedCities.map(({id, unidade}) => {
+                            { unidades?.length > 0 ? (
+                                unidades.map(({id, unidade}) => {
                                     return (
                                         <p className="mt-2 input-item-selected" key={id}>{unidade}</p>
                                     )
@@ -192,20 +201,6 @@ export default function Content() {
                                     )
                                 })}
                             </select>
-
-                            {/* <div className="card flex justify-content-center">
-                                <MultiSelect 
-                                    value={itemVenda} 
-                                    onChange={handleChangeProducts} 
-                                    options={products} 
-                                    optionLabel="produto" 
-                                    display="chip"
-                                    placeholder="Selecione um produto" 
-                                    maxSelectedLabels={3} 
-                                    className="w-full md:w-10rem" 
-                                />
-                            </div> */}
-
                             <p className='mt-2 input-item-selected'>{itemVenda}</p>
                         </div>
 
@@ -231,10 +226,8 @@ export default function Content() {
                                     )
                                 })
                             ) : ''}
-
                         </div>
 
-                        
                         <div className='col-md-2 select-item'>
                           <label htmlFor="para_quem" className="form-label">Para quem</label>
                             <select className="form-control" id='para_quem' onChange={(e) => setCliente(e.target.value)}>
@@ -277,7 +270,6 @@ export default function Content() {
                             </select>
                             <p className='mt-1 mb-0 input-item-selected'>{estado}</p>
                         </div>
-
                     </div>
 
                     <div className="row m-top-5" >
@@ -306,7 +298,7 @@ export default function Content() {
                         </div>
 
                         <div className="col-md-6 select-item">
-                                <label htmlFor="idade" className="form-label">Qual idade</label>
+                           <label htmlFor="idade" className="form-label">Qual idade</label>
                             <div className='rangers'>
                                 <div className='input-range'>
                                     <span>Min</span>

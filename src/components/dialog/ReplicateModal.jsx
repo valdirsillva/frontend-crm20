@@ -8,7 +8,7 @@ import "./modal-replicate.css"
 export default function ReplicateModal(props) {
     const [visible, setVisible] = useState(false);
 
-    console.log(props)
+    // console.log(props)
 
     return (
         <div className="card flex justify-content-center">
@@ -20,8 +20,16 @@ export default function ReplicateModal(props) {
             <Dialog header="Deseja replicar essa estratégia?" visible={visible} style={{ width: '40vw' }} onHide={() => setVisible(false)}>
                <div className="box">
                     <div className="col-md-12 col-xs-12 select-item ">
-                        <label htmlFor="estragegia" className="form-label">Nome da estratégia</label>
-                        <input type="text" name="" id="estragegia" className="form-control" />
+                        <label 
+                            htmlFor="estragegia" 
+                            className="form-label"
+                        >Nome da estratégia</label>
+                        <input 
+                            type="text" 
+                            name="" 
+                            id="estragegia" 
+                            className="form-control" 
+                        />
                     </div>
                     {/* <div className="col-md-6 col-xs-12 select-item ">
                         <label htmlFor="unidade"  className="form-label">Unidade</label>
@@ -32,11 +40,23 @@ export default function ReplicateModal(props) {
                <div className="box">
                     <div className="col-md-6 col-xs-12 select-item ">
                         <label htmlFor="estragegia" className="form-label">Solicitante</label>
-                        <input type="text" name="" id="estragegia" value="Jhon Doe" className="form-control" disabled/>
+                        <input 
+                            type="text" 
+                            name="" 
+                            id="estragegia" 
+                            value="Jhon Doe" 
+                            className="form-control" disabled 
+                        />
                     </div>
                     <div className="col-md-6 col-xs-12 select-item ">
                         <label htmlFor="unidade"  className="form-label">Unidade</label>
-                        <input type="text" name="" id="unidade" value="São Paulo" className="form-control" disabled/>
+                        <input 
+                            type="text" 
+                            name="" 
+                            id="unidade" 
+                            value="São Paulo" 
+                            className="form-control" disabled 
+                        />
                     </div>
                </div>
                <br/>
